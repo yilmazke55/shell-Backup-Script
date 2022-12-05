@@ -85,14 +85,125 @@ function backup(){
 
 function unbackup(){
 	echo "UNBACKUP"
+	echo "|----------------------------------------------|"
+	echo "| Backup entpacken:    |"
+	echo "|                                              |"
+	read -p "| Eingabe: " unbackup 
 }
 
 function listbackup(){
 	echo "LISTBACKUP"
+	echo "|----------------------------------------------|"
+	echo "| Bckup auflisten:    |"
+	echo "|                                              |"
+	read -p "| Eingabe: " listbackup 
 }
 
 function deletebackup(){
 	echo "DELETEBACKUP"
+	echo "|----------------------------------------------|"
+	echo "| Backup löschen:    |"
+	echo "|                                              |"
+	read -p "| Eingabe: " deletebackup 
+}
+
+function unbackup(){
+	BACKUPFILE=$(date +%Y%m%d-%H%M%S)-backup.tgz
+	YESNO=0
+	until [ $YESNO = 1 ]
+	do
+		compress
+		echo "| Sind Sie sicher das Sie die Option ${COMPRESS}         |" 
+		echo "| benutzen möchten?                            |"
+		read -p "| (0: nein | 1: ja) " YESNO
+	done
+	# 
+	YESNO=0
+	until [ $YESNO = 1 ]
+	do
+		unbackup
+		echo "| Sind Sie sicher das Sie hier in speichern möchten: ${unbackup}         |" 
+		echo "| benutzen möchten?                            |"
+		read -p "| (0: nein | 1: ja) " YESNO
+	done
+	#
+	YESNO=0
+	until [ $YESNO = 1 ]
+	do
+		unbackup	
+		echo "| Sind Sie sicher das Sie dieses Verzeichnis sichern wollen? ${unbackup}         |" 
+		echo "| benutzen möchten?                            |"
+		read -p "| (0: nein | 1: ja) " YESNO
+	done
+		
+	tar cf${COMPRESS} ${unbackup}/$BACKUPFILE ${unbackup}
+	sleep 2
+}
+
+function listbackup(){
+	BACKUPFILE=$(date +%Y%m%d-%H%M%S)-backup.tgz
+	YESNO=0
+	until [ $YESNO = 1 ]
+	do
+		compress
+		echo "| Sind Sie sicher das Sie die Option ${COMPRESS}         |" 
+		echo "| benutzen möchten?                            |"
+		read -p "| (0: nein | 1: ja) " YESNO
+	done
+	# 
+	YESNO=0
+	until [ $YESNO = 1 ]
+	do
+		listbackup
+		echo "| Sind Sie sicher das Sie hier in speichern möchten: ${listbackup}         |" 
+		echo "| benutzen möchten?                            |"
+		read -p "| (0: nein | 1: ja) " YESNO
+	done
+	#
+	YESNO=0
+	until [ $YESNO = 1 ]
+	do
+		listbackup	
+		echo "| Sind Sie sicher das Sie dieses Verzeichnis sichern wollen? ${listbackup}         |" 
+		echo "| benutzen möchten?                            |"
+		read -p "| (0: nein | 1: ja) " YESNO
+	done
+		
+	tar cf${COMPRESS} ${listbackup}/$BACKUPFILE ${listbackup}
+	sleep 2
+}
+
+function deletebackup(){
+	BACKUPFILE=$(date +%Y%m%d-%H%M%S)-backup.tgz
+	YESNO=0
+	until [ $YESNO = 1 ]
+	do
+		compress
+		echo "| Sind Sie sicher das Sie die Option ${COMPRESS}         |" 
+		echo "| benutzen möchten?                            |"
+		read -p "| (0: nein | 1: ja) " YESNO
+	done
+	# 
+	YESNO=0
+	until [ $YESNO = 1 ]
+	do
+		deletebackup
+		echo "| Sind Sie sicher das Sie hier in speichern möchten: ${deletebackup}         |" 
+		echo "| benutzen möchten?                            |"
+		read -p "| (0: nein | 1: ja) " YESNO
+	done
+	#
+	YESNO=0
+	until [ $YESNO = 1 ]
+	do
+		deletebackup	
+		echo "| Sind Sie sicher das Sie dieses Verzeichnis sichern wollen? ${deletebackup}         |" 
+		echo "| benutzen möchten?                            |"
+		read -p "| (0: nein | 1: ja) " YESNO
+	done
+		
+	tar cf${COMPRESS} ${deletebackup}/$BACKUPFILE ${deletebackup}
+	sleep 2
 }
 
 # Hauptereignisschleife
@@ -120,4 +231,3 @@ do
 done
 
 exit 0
-
