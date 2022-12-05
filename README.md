@@ -2,8 +2,6 @@
 #!/bin/bash
 
 # Backupscript: Erstellen und Zurückspielen von Verzeichnissen
-# Author : Martin Rösner
-# E-Mail : roesner@elektronikschule.de
 # Version: v01
 
 # Hauptmenu ausgeben
