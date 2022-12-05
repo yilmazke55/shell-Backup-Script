@@ -1,5 +1,4 @@
 # shell-Backup-Script
-#!/bin/bash
 
 # Backupscript: Erstellen und Zurückspielen von Verzeichnissen
 # Version: v01
