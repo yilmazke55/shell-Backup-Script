@@ -1,6 +1,8 @@
-# shell-Backup-Script
+#!/bin/bash
 
 # Backupscript: Erstellen und Zurückspielen von Verzeichnissen
+# Author : Martin Rösner
+# E-Mail : roesner@elektronikschule.de
 # Version: v01
 
 # Hauptmenu ausgeben
@@ -37,7 +39,7 @@ function where2Backup(){
 	echo "|----------------------------------------------|"
 	echo "| Wohin soll das Backup gespeichert werden:    |"
 	echo "|                                              |"
-	read -p "| Eingabe: " WHERE2BACKUP 
+	read -p "| Eingabe: " WHERE2BACKUP
 }
 
 # Eingeben des Pfades, der gesichert werden soll
@@ -46,7 +48,7 @@ function what2Backup(){
 	echo "|----------------------------------------------|"
 	echo "| Wohin soll das Backup gespeichert werden:    |"
 	echo "|                                              |"
-	read -p "| Eingabe: " WHAT2BACKUP 
+	read -p "| Eingabe: " WHAT2BACKUP
 }
 
 
@@ -56,16 +58,7 @@ function backup(){
 	until [ $YESNO = 1 ]
 	do
 		compress
-		echo "| Sind Sie sicher das Sie die Option ${COMPRESS}         |" 
-		echo "| benutzen möchten?                            |"
-		read -p "| (0: nein | 1: ja) " YESNO
-	done
-	# 
-	YESNO=0
-	until [ $YESNO = 1 ]
-	do
-		where2Backup
-		echo "| Sind Sie sicher das Sie hier in speichern möchten: ${WHERE2BACKUP}         |" 
+		echo "| Sind Sie sicher das Sie die Option ${COMPRESS}         |"
 		echo "| benutzen möchten?                            |"
 		read -p "| (0: nein | 1: ja) " YESNO
 	done
@@ -73,12 +66,21 @@ function backup(){
 	YESNO=0
 	until [ $YESNO = 1 ]
 	do
-		what2Backup	
-		echo "| Sind Sie sicher das Sie dieses Verzeichnis sichern wollen? ${WHAT2BACKUP}         |" 
+		where2Backup
+		echo "| Sind Sie sicher das Sie hier in speichern möchten: ${WHERE2BACKUP}         |"
 		echo "| benutzen möchten?                            |"
 		read -p "| (0: nein | 1: ja) " YESNO
 	done
-		
+	#
+	YESNO=0
+	until [ $YESNO = 1 ]
+	do
+		what2Backup
+		echo "| Sind Sie sicher das Sie dieses Verzeichnis sichern wollen? ${WHAT2BACKUP}         |"
+		echo "| benutzen möchten?                            |"
+		read -p "| (0: nein | 1: ja) " YESNO
+	done
+
 	tar cf${COMPRESS} ${WHERE2BACKUP}/$BACKUPFILE ${WHAT2BACKUP}
 	sleep 2
 }
@@ -88,7 +90,7 @@ function unbackup(){
 	echo "|----------------------------------------------|"
 	echo "| Backup entpacken:    |"
 	echo "|                                              |"
-	read -p "| Eingabe: " unbackup 
+	read -p "| Eingabe: " unbackup
 }
 
 function listbackup(){
@@ -96,7 +98,7 @@ function listbackup(){
 	echo "|----------------------------------------------|"
 	echo "| Bckup auflisten:    |"
 	echo "|                                              |"
-	read -p "| Eingabe: " listbackup 
+	read -p "| Eingabe: " listbackup
 }
 
 function deletebackup(){
@@ -104,7 +106,7 @@ function deletebackup(){
 	echo "|----------------------------------------------|"
 	echo "| Backup löschen:    |"
 	echo "|                                              |"
-	read -p "| Eingabe: " deletebackup 
+	read -p "| Eingabe: " deletebackup
 }
 
 function unbackup(){
@@ -112,17 +114,8 @@ function unbackup(){
 	YESNO=0
 	until [ $YESNO = 1 ]
 	do
-		compress
-		echo "| Sind Sie sicher das Sie die Option ${COMPRESS}         |" 
-		echo "| benutzen möchten?                            |"
-		read -p "| (0: nein | 1: ja) " YESNO
-	done
-	# 
-	YESNO=0
-	until [ $YESNO = 1 ]
-	do
 		unbackup
-		echo "| Sind Sie sicher das Sie hier in speichern möchten: ${unbackup}         |" 
+		echo "| Sind Sie sicher das Sie die Option ${UNBACKUP}         |"
 		echo "| benutzen möchten?                            |"
 		read -p "| (0: nein | 1: ja) " YESNO
 	done
@@ -130,12 +123,21 @@ function unbackup(){
 	YESNO=0
 	until [ $YESNO = 1 ]
 	do
-		unbackup	
-		echo "| Sind Sie sicher das Sie dieses Verzeichnis sichern wollen? ${unbackup}         |" 
+		unbackup
+		echo "| Sind Sie sicher das Sie hier in speichern möchten: ${UNBACKUP}         |"
 		echo "| benutzen möchten?                            |"
 		read -p "| (0: nein | 1: ja) " YESNO
 	done
-		
+	#
+	YESNO=0
+	until [ $YESNO = 1 ]
+	do
+		unbackup
+		echo "| Sind Sie sicher das Sie dieses Verzeichnis sichern wollen? ${UNBACKUP}         |"
+		echo "| benutzen möchten?                            |"
+		read -p "| (0: nein | 1: ja) " YESNO
+	done
+
 	tar cf${COMPRESS} ${unbackup}/$BACKUPFILE ${unbackup}
 	sleep 2
 }
@@ -145,17 +147,8 @@ function listbackup(){
 	YESNO=0
 	until [ $YESNO = 1 ]
 	do
-		compress
-		echo "| Sind Sie sicher das Sie die Option ${COMPRESS}         |" 
-		echo "| benutzen möchten?                            |"
-		read -p "| (0: nein | 1: ja) " YESNO
-	done
-	# 
-	YESNO=0
-	until [ $YESNO = 1 ]
-	do
 		listbackup
-		echo "| Sind Sie sicher das Sie hier in speichern möchten: ${listbackup}         |" 
+		echo "| Sind Sie sicher das Sie die Option ${LISTBACKUP}         |"
 		echo "| benutzen möchten?                            |"
 		read -p "| (0: nein | 1: ja) " YESNO
 	done
@@ -163,12 +156,21 @@ function listbackup(){
 	YESNO=0
 	until [ $YESNO = 1 ]
 	do
-		listbackup	
-		echo "| Sind Sie sicher das Sie dieses Verzeichnis sichern wollen? ${listbackup}         |" 
+		listbackup
+		echo "| Sind Sie sicher das Sie hier in speichern möchten: ${LISTBACKUP}         |"
 		echo "| benutzen möchten?                            |"
 		read -p "| (0: nein | 1: ja) " YESNO
 	done
-		
+	#
+	YESNO=0
+	until [ $YESNO = 1 ]
+	do
+		listbackup
+		echo "| Sind Sie sicher das Sie dieses Verzeichnis sichern wollen? ${LISTBACKUP}         |"
+		echo "| benutzen möchten?                            |"
+		read -p "| (0: nein | 1: ja) " YESNO
+	done
+
 	tar cf${COMPRESS} ${listbackup}/$BACKUPFILE ${listbackup}
 	sleep 2
 }
@@ -178,17 +180,8 @@ function deletebackup(){
 	YESNO=0
 	until [ $YESNO = 1 ]
 	do
-		compress
-		echo "| Sind Sie sicher das Sie die Option ${COMPRESS}         |" 
-		echo "| benutzen möchten?                            |"
-		read -p "| (0: nein | 1: ja) " YESNO
-	done
-	# 
-	YESNO=0
-	until [ $YESNO = 1 ]
-	do
-		deletebackup
-		echo "| Sind Sie sicher das Sie hier in speichern möchten: ${deletebackup}         |" 
+		where2Find
+		echo "| Sind Sie sicher das Sie die Option ${where2find}         |"
 		echo "| benutzen möchten?                            |"
 		read -p "| (0: nein | 1: ja) " YESNO
 	done
@@ -196,12 +189,21 @@ function deletebackup(){
 	YESNO=0
 	until [ $YESNO = 1 ]
 	do
-		deletebackup	
-		echo "| Sind Sie sicher das Sie dieses Verzeichnis sichern wollen? ${deletebackup}         |" 
+		deletebackup
+		echo "| Sind Sie sicher das Sie hier in speichern möchten: ${DELETEBACKUP}         |"
 		echo "| benutzen möchten?                            |"
 		read -p "| (0: nein | 1: ja) " YESNO
 	done
-		
+	#
+	YESNO=0
+	until [ $YESNO = 1 ]
+	do
+		deletebackup
+		echo "| Sind Sie sicher das Sie dieses Verzeichnis sichern wollen? ${DELETEBACKUP}         |"
+		echo "| benutzen möchten?                            |"
+		read -p "| (0: nein | 1: ja) " YESNO
+	done
+
 	tar cf${COMPRESS} ${deletebackup}/$BACKUPFILE ${deletebackup}
 	sleep 2
 }
