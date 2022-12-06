@@ -124,7 +124,7 @@ function unbackup(){
 	until [ $YESNO = 1 ]
 	do
 		unbackup
-		echo "| Sind Sie sicher das Sie hier in speichern möchten: ${UNBACKUP}         |"
+		echo "| Sind Sie sicher das Sie hier in speichern möchten: ${WHERE2BACKUP}         |"
 		echo "| benutzen möchten?                            |"
 		read -p "| (0: nein | 1: ja) " YESNO
 	done
@@ -133,7 +133,7 @@ function unbackup(){
 	until [ $YESNO = 1 ]
 	do
 		unbackup
-		echo "| Sind Sie sicher das Sie dieses Verzeichnis sichern wollen? ${UNBACKUP}         |"
+		echo "| Sind Sie sicher das Sie dieses Verzeichnis sichern wollen? ${WHAT2BACKUP}         |"
 		echo "| benutzen möchten?                            |"
 		read -p "| (0: nein | 1: ja) " YESNO
 	done
@@ -148,7 +148,7 @@ function listbackup(){
 	until [ $YESNO = 1 ]
 	do
 		listbackup
-		echo "| Sind Sie sicher das Sie die Option ${LISTBACKUP}         |"
+		echo "| Sind Sie sicher das Sie die Option ${WHAT2BACKUP}         |"
 		echo "| benutzen möchten?                            |"
 		read -p "| (0: nein | 1: ja) " YESNO
 	done
@@ -157,7 +157,7 @@ function listbackup(){
 	until [ $YESNO = 1 ]
 	do
 		listbackup
-		echo "| Sind Sie sicher das Sie hier in speichern möchten: ${LISTBACKUP}         |"
+		echo "| Sind Sie sicher das Sie hier in speichern möchten: ${WHERE2BACKUP}         |"
 		echo "| benutzen möchten?                            |"
 		read -p "| (0: nein | 1: ja) " YESNO
 	done
@@ -191,15 +191,6 @@ function deletebackup(){
 	do
 		deletebackup
 		echo "| Sind Sie sicher das Sie hier in speichern möchten: ${DELETEBACKUP}         |"
-		echo "| benutzen möchten?                            |"
-		read -p "| (0: nein | 1: ja) " YESNO
-	done
-	#
-	YESNO=0
-	until [ $YESNO = 1 ]
-	do
-		deletebackup
-		echo "| Sind Sie sicher das Sie dieses Verzeichnis sichern wollen? ${DELETEBACKUP}         |"
 		echo "| benutzen möchten?                            |"
 		read -p "| (0: nein | 1: ja) " YESNO
 	done
